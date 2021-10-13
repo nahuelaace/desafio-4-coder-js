@@ -95,7 +95,7 @@ function mostrarPedido() {
 alert("Buenas! Somos una tienda de tecnologia \nPor ahora solo vendemos teclados, mouses y monitores \nA continuacion le mostramos nuestra lista de precios");
 
 // Recordatorio de descuentos cada 3 productos
-alert("Le recordamos que tenemos una PROMOCION \nCada 3 de un mismo producto usted tendra un 15% de descuento");
+alert("Le recordamos que tenemos una PROMOCION \nCada 3 de un mismo producto usted tendra un 15% de descuento sobre esos 3");
 
 // Agregando productos al carrito
 agregarAlCarrito();
