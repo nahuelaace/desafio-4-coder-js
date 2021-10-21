@@ -3,12 +3,12 @@
 class Pedido{
 
     // Atributos  de la clase pedido
-    constructor(cantidadTeclados, cantidadMouses, cantidadMonitores){
+    constructor(listaCombra){
 
         // Cantidad de productos pedidos
-        this.cantidadTeclados = cantidadTeclados;
-        this.cantidadMouses = cantidadMouses;
-        this.cantidadMonitores = cantidadMonitores;
+        this.cantidadTeclados = listaCombra[0];
+        this.cantidadMouses = listaCombra[1];
+        this.cantidadMonitores = listaCombra[2];
 
         // Cantidad de productos sin descuento en el pedido
         this.cantTecladosSinDesc = 0;
@@ -106,9 +106,10 @@ class Carrito{
 
     // Atributos donde se guarda la cantidad de productos que se van a comprar
     constructor() {
-        this.contMouses = 0;
-        this.contTeclados = 0;
-        this.contMonitores = 0;
+
+        // La primera posicion pertenece a los teclados, la segunda a los mouses y la tercera a los monitores.
+        // Por cuestiones de tiempo no lo pude hacer mas entendible, pero lo mejorare
+        this.contProductos = [0,0,0];
     }
     
     // Metodo para agregar productos al carrito
@@ -125,7 +126,7 @@ class Carrito{
                 case "1":
                     cantidad = parseInt(prompt("Cuantos teclados quiere comprar?"));
                     if (cantidad && (cantidad >= 0)) {
-                        this.contTeclados = this.contTeclados + cantidad;
+                        this.contProductos[0] = this.contProductos[0] + cantidad;
                         alert("Usted ha agregado "+cantidad+" teclados a su carrito");
                     } else {
                         alert("El dato ingresado no es valido")
@@ -136,7 +137,7 @@ class Carrito{
                 case "2":
                     cantidad = parseInt(prompt("Cuantos mouses quiere comprar?"));
                     if (cantidad && (cantidad >= 0)) {
-                        this.contMouses = this.contMouses + cantidad;
+                        this.contProductos[1] = this.contProductos[1] + cantidad;
                         alert("Usted ha agregado "+cantidad+" mouses a su carrito");
                     } else {
                         alert("El dato ingresado no es valido")
@@ -147,7 +148,7 @@ class Carrito{
                 case "3":
                     cantidad = parseInt(prompt("Cuantos monitores quiere comprar?"));
                     if (cantidad && (cantidad >= 0)) {
-                        this.contMonitores = this.contMonitores + cantidad;
+                        this.contProductos[2] = this.contProductos[2] + cantidad;
                         alert("Usted ha agregado "+cantidad+" monitores a su carrito");
                     }else{
                         alert("El dato ingresado no es valido")
@@ -161,7 +162,7 @@ class Carrito{
             }
     
             // Muesta de productos en carrito
-            alert("Lista de productos en carrito: \n"+this.contTeclados+" teclados \n"+this.contMouses+" mouses \n"+this.contMonitores+" monitores");            
+            alert("Lista de productos en carrito: \n"+this.contProductos[0]+" teclados \n"+this.contProductos[1]+" mouses \n"+this.contProductos[2]+" monitores");            
             
         } while (confirm("Quiere agregar mas cosas al carrito?"))
     }
@@ -169,23 +170,24 @@ class Carrito{
 }
 
 
-// Saludo al cliente
-alert("Buenas! Somos una tienda de tecnologia \nPor ahora solo vendemos teclados, mouses y monitores \nA continuacion le mostramos nuestra lista de precios");
 
-// Recordatorio de descuentos cada 3 productos
-alert("Le recordamos que tenemos una PROMOCION \nCada 3 de un mismo producto usted tendra un 15% de descuento sobre esos 3");
+// // Saludo al cliente
+// alert("Buenas! Somos una tienda de tecnologia \nPor ahora solo vendemos teclados, mouses y monitores \nA continuacion le mostramos nuestra lista de precios");
+
+// // Recordatorio de descuentos cada 3 productos
+// alert("Le recordamos que tenemos una PROMOCION \nCada 3 de un mismo producto usted tendra un 15% de descuento sobre esos 3");
 
 // Agregando productos al carrito
 const carrito = new Carrito();
 carrito.agregarAlCarrito();
 
-// Mostrando pedido resgistrado
-const pedido = new Pedido(carrito.contTeclados,carrito.contMouses,carrito.contMonitores);
+// Mostrando pedido resgistrado1
+const pedido = new Pedido(carrito.contProductos);
 pedido.confirmarPedido();
 
 console.log(pedido);
 
-// Despedida
-alert("Gracias por comprar adios!");
+// // Despedida
+// alert("Gracias por comprar adios!");
 
 
